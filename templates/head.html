@@ -1,0 +1,144 @@
+{% load static %}
+<!-- 引入notifications的模板标签 -->
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DataForest</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header id="tt-header">
+        <div class="container">
+            <div class="row tt-row no-gutters">
+                <div class="col-auto">
+
+                    <a class="toggle-mobile-menu" href="#">
+                        <svg class="tt-icon">
+                        </svg>
+                    </a>
+                    <!-- /toggle mobile menu -->
+                    <!-- logo -->
+                    <div class="tt-logo">
+                        <a href="{% url 'question:index' page_id=1  %}"><img src="{% static 'images/IMG_0212.JPG' %}" alt=""></a>
+                    </div>
+
+
+                    <div class="tt-title">
+                        <a href="{% url 'question:index' page_id=1 %}"><span style="font-size:23px">DataForest</span></a>
+                    </div>
+
+                    <!-- menu -->
+                    {% if user.is_superuser %}
+                    <div class="tt-desktop-menu">
+                        <nav>
+                            <ul>
+                                <!-- <li><a href="{% url 'question:index' page_id=1 %}"><span>LearningShare</span></a></li> -->
+<!--                                <li><a href="{% url 'question:index' page_id=1 %}"><span style="font-size:20px">主页</span></a></li>-->
+                                <li><a href="{% url 'question:add_question' %}"><span style="font-size:20px">添加数据集🌲</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {% else %}
+                    <div class="tt-desktop-menu">
+                        <nav>
+                            <ul>
+                                <!-- <li><a href="{% url 'question:index' page_id=1 %}"><span>LearningShare</span></a></li> -->
+<!--                                <li><a href="{% url 'question:index' page_id=1 %}"><span style="font-size:20px">主页</span></a></li>-->
+                                <li><span style="font-size:20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                            </ul>
+                        </nav>
+                    </div>
+{% endif %}
+                    <!-- search -->
+                    <div class="tt-search">
+                        <!-- toggle -->
+                        <button class="tt-search-toggle" data-toggle="modal" data-target="#modalAdvancedSearch">
+                        </button>
+
+                        <form class="search-wrapper" role="search" method="get" action="{%url 'question:search' %}">
+                            <div class="form-group">
+                                <input type="search" class="tt-search__input" name="keyword" placeholder="Search"
+                                    required>
+                                <!-- <button type="submit" class="btn btn-default"><span>搜索</span></button> -->
+                                <!-- <button type="button" class="tt-view-all" data-toggle="modal" data-target="#modalAdvancedSearch">Advanced Search</button> -->
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tt-desktop-menu">
+                        <nav>
+                            <ul>
+                                <p>&nbsp&nbsp&nbsp&nbsp</p>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="tt-account-btn">
+                            <a href="{% url 'account:user_register' %}" class="btn btn-secondary"><span>注册</span></a>
+                        </div>
+                    </div>
+
+                    <div class="tt-desktop-menu">
+                        <nav>
+                            <ul>
+                                    {% if user.is_authenticated %}
+                                    <li>
+
+                                        <a href="#">
+                                            <!-- 新增代码，小红点 -->
+                                            {% if unread_count %}
+                                                <svg viewBox="0 0 8 8"
+                                                     width="8px"
+                                                     height="8px">
+                                                    <circle cx="4"
+                                                            cy="4"
+                                                            r="4"
+                                                            fill="#ff6b6b"
+                                                            ></circle>
+                                                </svg>
+                                            {% endif %}
+                                            <span>
+                                            {% if user.userinfo.photo %}
+                                            <img src="{{ user.userinfo.photo | striptags }}" height="40" width="40"
+                                                 class="img-circle" id="my_photo" name="user_face">
+                                            {% else %}
+                                            <img name="user_face" src="{% static 'images/default.jpg' %}" height="35" width="35"
+                                                 class="img-circle" width="270px" id="my_photo">
+                                            {% endif %}
+                                            </span>
+                                            </a>
+                                        <ul>
+                                            <li><a href="{% url 'question:my_center' %}">我的主页</a></li>
+                                            <li><a href="{% url 'notice:list' %}">通知
+                                                {% if unread_count %}
+                                                <span class="badge badge-danger" >{{ unread_count }}</span>
+                                                {% endif %}
+                                            </a> </li>
+                                            <!--<li><a href="{% url 'account:password_change' %}">修改密码</a></li>-->
+                                            <li><a href="{% url 'account:user_logout' %}">退出</a></li>
+                                        </ul>
+                                    {% else %}
+                                    <li>
+                                        <a href="{% url 'account:user_login' %}" style="font-size:20px">登录</a>
+                                    </li>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+</body>

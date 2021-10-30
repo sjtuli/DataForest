@@ -1,0 +1,123 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'editor/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'editor/css/editormd.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="col-sm-9">
+    <div class="tt-topic-list">
+        <div class="tt-list-header">
+            <div class="tt-col-topic">
+                <h2>Add Database</h2>
+            </div>
+        </div>
+    </div>
+        <div id="fh5co-contact" >
+            <div class="container">
+                <form action="." method="post">
+                    {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.category.id_for_label }}">请选择数据集🌲&nbsp;&nbsp;类型</label>
+                    {{ form.category }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}">名称</label>
+                    {{ form.title }}
+                </div>
+                    <div class="miaoshu"><span>详细描述：</span></div>
+                    <div class="row" style="margin-top: 10px;">
+                    <div id="editormd" class="col-md-10 text-left">
+                    <textarea style="display: none;" id="id_body"></textarea>
+                </div>
+                    </div>
+            </div>
+                    <div class="row text-center vertical-middle-sm" >
+                        {{ askMessage }}
+                        <button type="submit" class="btn btn-default btn-lg" style="margin-left:200px">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
+
+<script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+<script type="text/javascript" src="{% static 'js/layer.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/json2.js' %}"></script>
+<script type="text/javascript" src="{% static "js/csrf.js" %}"></script>
+<script type="text/javascript" src="{% static 'editor/editormd.min.js' %}"></script>
+<script type="text/javascript">
+    function add_question() {
+        var questionTitle = $("#id_title").val();
+        var category_id = $("#which_category").val();
+        var body = $("#id_body").val();
+        $.ajax({
+            url:"{% url 'question:add_question' %}",
+            type:"POST",
+            data: {"questionTitle":questionTitle,"questionDescription":body,"category":category_id},
+            success:function (e) {
+                    if(e==="1")
+                        layer.msg("successful");
+                    else if(e===2)
+                        layer.msg("sorry");
+                    else {
+                        layer.msg("sorry2");
+
+                    }
+
+            }
+
+        })
+
+    }
+</script>
+
+        <!--markdown-->
+<script type="text/javascript" src='{% static "editor/editormd.min.js" %}'></script>
+<script type="text/javascript">
+    $(function() {
+        var editor  = editormd("editormd",{
+            width : "100%",
+            height : 640,
+            path : "{% static 'editor/lib/' %}",
+            syncScrolling : "single",
+            tocm: true,         // Using [TOCM]
+                    tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+                    flowChart: true,             // 开启流程图支持，默认关闭
+                    sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+                    imageUpload: true,
+                    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                    imageUploadURL: "{% url 'question:upload' %}",
+                    onload: function () {
+                        console.log('onload', this);
+                    },
+        });
+    });
+</script>
+{% endblock %}
+{% block right %}
+<div class="col-sm-3" >
+    <div class="side-bar-well clearfix" style="position: fixed;">
+        <div class="col-sm-5"><img src="{% static 'images/support.png' %}"></div>
+        <div class="col-sm-7">
+{% if user.username %}
+            <p class="side-bar-well-title">{{user.username}}</p>
+            <p>🟢&nbsp;&nbsp;&nbsp;正在登录</p>
+            {% else %}
+            <p>🔴&nbsp;&nbsp;&nbsp;未登录</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="side-bar-well" style="position: fixed;margin-top:90px">
+        <strong class="side-bar-well-title">常访问数据集：</strong>
+        {% for question in question_2 %}
+        <a href="{% url 'question:question_content' question_id=question.id %}" class="news-item">
+            <div class="news-title">{{question.questionTitle}}</div>
+        </a>
+        <div class="news-info">
+            <span>{{ question.user }}</span>
+            <span>&nbsp{{question.created}}&nbsp</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% block title %}
+<div class="tt-col-topic text-center">
+    <h1>Login</h1>
+    <p>Input your username and password</p>
+</div>
+{% endblock %}
+{% block register %}
+<div class="col text-center vertical-middle-sm">
+    <form class="form-horizontal" action="." method="post">{% csrf_token %}
+    <!--{{ form.as_p }}-->
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}" class="col-md-5 control-label"
+                   style="color:red"><span class="glyphicon glyphicon-user"></span>Username </label>
+            <div class="col-md-1 text-left">{{ form.username }}</div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}" class="col-md-5 control-label"
+                   style="color: blue"><span class="glyphicon glyphicon-floppy-open"></span>Password</label>
+            <div class="col-md-1 text-left">{{ form.password }}</div>
+        </div>
+        <div >
+        <input type="submit" class="btn btn-primary btn-lg" style="display:block;margin:0 auto" value="Login" >
+        </div>
+    </form>
+</div>
+{% endblock %}

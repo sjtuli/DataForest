@@ -1,0 +1,118 @@
+{% extends "./index_question.html" %}
+{% load markdown_extras %}
+{% load static %}
+
+{% block content %}
+<div class="col-sm-9">
+    <div class="tt-single-topic-list">
+        <div class="tt-item">
+            <div class="tt-single-topic">
+                <div class="tt-item-header">
+                    <div class="tt-item-info info-top">
+                        <div class="tt-avater-title">
+                            <a href="#">{{ question.user }}</a>
+                        </div>
+                        <a href="#" class="tt-info-time">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-time"></use>
+                                </svg></i>{{timezone.now}}
+                        </a>
+                    </div>
+                    <h1 class="tt-item-title">
+                        <h2>{{ question.questionTitle }}</h2>
+                    </h1>
+                    <div class="tt-item-tag">
+                        <ul class="tt-list-badge">
+                            <li><a href="#"><span class="tt-color07 tt-badge">{{ question.questionCategory }}</span></a>
+                            </li>
+                            <li><a href="#"><span class="tt-color09 tt-badge">{{ question.created }}</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tt-item-tag">
+                        <ul class="tt-list-badge">
+                            {% if question_collect %}
+                            <li><a href="{% url 'question:cancel_collect_question' id=question.id action='取消收藏' %}">
+                                    <span class="tt-badge">取消收藏</span></a></li>
+                            {% else %}
+                            <li><a href="{% url 'question:collect_question' id=question.id action='收藏' %}">
+                                    <span class="tt-badge">⭐&nbsp;&nbsp;&nbsp;收藏</span></a></li>
+                            {% endif %}
+                         <li><a  href="#"><span class="tt-badge"> {{ question.views }}view{{ question.views|pluralize }}
+                                    </span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tt-item-description">
+                    <h6 class="tt-title">数据集🌲&nbsp;&nbsp;描述：</h6>
+                    <p>{{ question.questionDescription | markdown | safe }}</p>
+
+                    {% include 'tree/tree.html'  %}
+                </div>
+                {% block node %}
+            </div>
+        </div>
+
+        {% endblock node %}
+    </div>
+</div>
+{% endblock content %}
+{% block page %}{% endblock %}
+{% block right %}
+<div class="col-sm-3" >
+    <div class="side-bar-well clearfix" style="position: fixed;">
+        <div class="col-sm-5"><img src="{% static 'images/support.png' %}"></div>
+        <div class="col-sm-7">
+            {% if user.username %}
+            <p class="side-bar-well-title">{{user.username}}</p>
+            <p>🟢&nbsp;&nbsp;&nbsp;正在登录</p>
+            {% else %}
+            <p>🔴&nbsp;&nbsp;&nbsp;未登录</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="side-bar-well" style="position: fixed; margin-top:90px">
+        <strong class="side-bar-well-title">常访问数据集</strong>
+        {% for question in question_2 %}
+        <a href="{% url 'question:question_content' question_id=question.id %}" class="news-item">
+            <div class="news-title">{{question.questionTitle}}</div>
+        </a>
+        <div class="news-info">
+            <span>{{ question.user }}</span>
+            <span>&nbsp{{question.created}}&nbsp</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+<script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+<script type="text/javascript" src="{% static 'js/layer.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/json2.js' %}"></script>
+<script type="text/javascript" src="{% static "js/csrf.js" %}"></script>
+<script>
+    function like_question(id, action) {
+        $.ajax(
+            {
+                url: "{% url 'question:like_question' %}",
+                type: "POST",
+                data: { "id": id, "action": action },
+                success: function (e) {
+                    if (e === 1) {
+                        layer.msg("感谢点赞");
+                        window.location.reload();
+
+                    } else {
+                        layer.msg("我会继续努力");
+                        window.location.reload();
+                    }
+
+                },
+                error: function (e) {
+                    layer.msg("发送失败");
+
+                }
+            });
+
+    }
+</script>

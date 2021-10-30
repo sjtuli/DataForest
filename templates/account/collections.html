@@ -1,0 +1,43 @@
+{% extends "question/my_center.html" %}
+{% load static %}
+
+{% block list %}
+<main id="tt-pageContent" class="tt-offset-small">
+    <div class="container">
+        <div class="tt-topic-list">
+			<div class="tt-list-header">
+                <div class="tt-col-topic text-center">
+					<h3>我收藏的数据集</h3>
+				</div>
+            </div>
+            {% for question in collect_questions %}
+            <div class="tt-item">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header pt-noborder">
+                        <div class="tt-item-header info-top">
+                            <div class="tt-avater-title">
+                                <a href="#">author: {{ question.user }}</a>
+                            </div>
+                            <div class="tt-item-title">
+                                <a href="{% url 'question:question_content' question_id=question.id %}">{{question.questionTitle}}</a>
+                            </div>
+                            <div class="tt-item-tag">
+                                <ul class="tt-list-badge">
+                                    <li><a href="#"><span
+												class="tt-color09 tt-badge">发表于{{ question.created }}</span></a></li>
+                                </ul>
+							</div>
+							<div class="tt-item-title">
+                                <p>{{ question.questionDescription | truncatechars:"30"}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			{% endfor %}
+		</div>
+	</div>
+</main>
+{% endblock %}
+
+

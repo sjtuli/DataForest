@@ -1,0 +1,367 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="col-sm-9">
+    <div class="tt-topic-list">
+        <div class="tt-list-header">
+            <div class="tt-col-topic" style="margin-left:130px">
+                <h2>Search</h2>
+            </div>
+        </div>
+    </div>
+    <div class="tt-single-topic-list">
+        {% if err_msg %}
+        <div class="tt-item">
+            <div class="tt-item-header">
+                <h3>
+                    <p>{{ err_msg }}</p>
+                </h3>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-sm-2">
+            <div class="tt-item" style="position: fixed; left: 15px; top: 75px;">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation"><a href="../search/">全部</a></li>
+                    <li role="presentation"><a href="../search/?type=user">用户搜索结果</a></li>
+                    <li role="presentation"><a href="../search/?type=question">数据集🌲&nbsp;&nbsp;搜索结果</a></li>
+                    <li role="presentation"><a href="../search/?type=department">节点搜索结果</a></li>
+                    <li role="presentation"><a href="../search/?type=node">节点内容搜索结果</a></li>
+                </ul>
+        </div>
+        </div>
+        
+        <div class="col-sm-9">
+            {% if keyword %}
+            <div class="tt-item">
+                <div class="tt-info-box">
+                    <div class="row-object-inline form-default">
+                        <h6 class="tt-title">关键字:</h6>
+                        <ul class="tt-list-badge tt-size-lg">
+                            <li><a href="#"><span class="tt-color02 tt-badge">{{ keyword }}</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+
+            {% if type is None %}
+                <div class="tt-item">
+                            <div class="tt-info-box">
+                                <a name="1"><p style="color:#3399CC;">有关数据集搜索结果：</p></a>
+                            </div>
+                </div>
+                {% for question in question_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-avater-title">
+                                    <a href="#">author: {{ question.user }}</a>
+                                </div>
+                                <div class="tt-item-title">
+                                    <a href="../{{question.id}}">{{question.questionTitle}}</a>
+                                </div>
+                                <div class="tt-item-tag">
+                                    <ul class="tt-list-badge">
+                                        <li><a href="#"><span class="tt-color09 tt-badge">发表于{{ question.created }}</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="tt-item">
+                    <div class="tt-info-box">
+                        <div class="row-object-inline form-default">
+                            <h6 class="tt-title">道歉，没有找到相应的数据集</h6>
+                        </div>
+                    </div>
+                </div>
+            <hr />
+                {% endfor %}
+
+        
+                <div class="tt-item">
+                            <div class="tt-info-box">
+                                <a name="3"><p style="color:#3399CC;">有关用户搜索结果：</p></a>
+                            </div>
+                </div>
+                {% for user in user_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-item-title">
+                                    <a href="../show_question/?user={{user.id}}">{{user.username}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="tt-item">
+                    <div class="tt-info-box">
+                        <div class="row-object-inline form-default">
+                            <h6 class="tt-title">道歉，没有找到相应的用户</h6>
+                        </div>
+                    </div>
+                </div>
+            <hr />
+                {% endfor %}
+
+            <div class="tt-item">
+                            <div class="tt-info-box">
+                                <a name="3"><p style="color:#3399CC;">有关节点搜索结果：</p></a>
+                            </div>
+                </div>
+                {% for department in department_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-item-title">
+                                    <a href="{%url 'tree:node' department_id=department.id%}">{{department.name}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="tt-item">
+                    <div class="tt-info-box">
+                        <div class="row-object-inline form-default">
+                            <h6 class="tt-title">道歉，没有找到相应的节点</h6>
+                        </div>
+                    </div>
+                </div>
+            <hr />
+                {% endfor %}
+
+                <div class="tt-item">
+                <div class="tt-info-box">
+                    <a name="3"><p style="color:#3399CC;">有关节点内容搜索结果：</p></a>
+                </div>
+                </div>
+
+            {% for file in file_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-item-title">
+                                    <a href="{%url 'tree:node' department_id=file.node.department_id%}">{{file.File_name}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% for node in node_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-item-title">
+                                    <a href="{%url 'tree:node' department_id=node.department_id%}">{{node.body}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            {% if not node_list %}
+            {% if not file_list %}
+                <div class="tt-item">
+                    <div class="tt-info-box">
+                        <div class="row-object-inline form-default">
+                            <h6 class="tt-title">道歉，没有找到相应的节点内容</h6>
+                        </div>
+                    </div>
+                </div>
+            <hr />
+            {% endif %}
+            {% endif %}
+
+
+
+             {% elif type == 'user' %}
+                <div class="tt-item">
+                            <div class="tt-info-box">
+                                <a name="3"><p style="color:#3399CC;">有关用户搜索结果：</p></a>
+                            </div>
+                </div>
+                {% for user in user_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-item-title">
+                                    <a href="../show_question/?user={{user.id}}">{{user.username}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="tt-item">
+                    <div class="tt-info-box">
+                        <div class="row-object-inline form-default">
+                            <h6 class="tt-title">道歉，没有找到相应的用户</h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            {% elif type == 'question' %}
+                <div class="tt-item">
+                            <div class="tt-info-box">
+                                <a name="1"><p style="color:#3399CC;">有关数据集🌲&nbsp;&nbsp;搜索结果：</p></a>
+                            </div>
+                </div>
+                {% for question in question_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-avater-title">
+                                    <a href="#">author: {{ question.user }}</a>
+                                </div>
+                                <div class="tt-item-title">
+                                    <a href="../{{question.id}}">{{question.questionTitle}}</a>
+                                </div>
+                                <div class="tt-item-tag">
+                                    <ul class="tt-list-badge">
+                                        <li><a href="#"><span class="tt-color09 tt-badge">发表于{{ question.created }}</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="tt-item">
+                    <div class="tt-info-box">
+                        <div class="row-object-inline form-default">
+                            <h6 class="tt-title">道歉，没有找到相应的数据集🌲</h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            {% elif type == 'department' %}
+                <div class="tt-item">
+                            <div class="tt-info-box">
+                                <a name="3"><p style="color:#3399CC;">有关节点搜索结果：</p></a>
+                            </div>
+                </div>
+                {% for department in department_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-item-title">
+                                    <a href="{%url 'tree:node' department_id=department.id%}">{{department.name}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="tt-item">
+                    <div class="tt-info-box">
+                        <div class="row-object-inline form-default">
+                            <h6 class="tt-title">道歉，没有找到相应的节点</h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            {% elif type == 'node' %}
+                    <div class="tt-item">
+                <div class="tt-info-box">
+                    <a name="3"><p style="color:#3399CC;">有关节点内容搜索结果：</p></a>
+                </div>
+                </div>
+
+            {% for file in file_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-item-title">
+                                    <a href="{%url 'tree:node' department_id=file.node.department_id%}">{{file.File_name}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% for node in node_list %}
+                <div class="tt-item">
+                    <div class="tt-single-topic">
+                        <div class="tt-item-header pt-noborder">
+                            <div class="tt-item-header info-top">
+                                <div class="tt-item-title">
+                                    <a href="{%url 'tree:node' department_id=node.department_id%}">{{node.body}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            {% if not node_list %}
+            {% if not file_list %}
+                <div class="tt-item">
+                    <div class="tt-info-box">
+                        <div class="row-object-inline form-default">
+                            <h6 class="tt-title">道歉，没有找到相应的节点内容</h6>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+            {% endif %}
+
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block left %}
+       <div class="col-sm-3" >
+                    <div class="side-bar-well clearfix" style="position: fixed;">
+                        <div class="col-sm-5"><img src="{% static 'images/support.png' %}"></div>
+                        <div class="col-sm-7">
+
+                            {% if user.username %}
+                            <p class="side-bar-well-title">{{user.username}}</p>
+                            <p>🟢&nbsp;&nbsp;&nbsp;正在登录</p>
+                            {% else %}
+                            <p>🔴&nbsp;&nbsp;&nbsp;未登录</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="side-bar-well" style="position: fixed; margin-top:90px">
+                        <strong class="side-bar-well-title">常访问数据集：</strong>
+                        {% for question in question_2 %}
+                        <a href="{% url 'question:question_content' question_id=question.id %}" class="news-item">
+                            <div class="news-title">{{question.questionTitle}}</div>
+                        </a>
+                        <div class="news-info">
+                            <span>{{ question.user }}</span>
+                            <span>&nbsp{{question.created}}&nbsp</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+{% endblock %}
