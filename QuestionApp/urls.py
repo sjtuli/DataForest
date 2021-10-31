@@ -24,4 +24,5 @@ urlpatterns = [
     path('my_center/',views.my_center,name='my_center'),
     path('my_answers/',views.my_answers,name='my_answers'),
     path('upload/',views.upload,name='upload'),
+    path('delete-question/<int:question_id>',views.deletequestion, name='delete-question'),
 ]

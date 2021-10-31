@@ -1,5 +1,5 @@
 # Create your views here.
-import json,os,random
+import json, os, random
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
@@ -23,15 +23,16 @@ global answer_list
 global user_list
 keyword = ''
 
+
 @login_required(login_url='/account/login')
 def index(request, page_id):
     category_id = request.GET.get('category_id')
     _user = request.user
     if len(request.GET) == 0:
-        question_1 = Question.objects.all().order_by('-created', '-grade','questionTitle')
+        question_1 = Question.objects.all().order_by('-created', '-grade', 'questionTitle')
         question_2 = Question.objects.all().order_by('-views', 'created', 'questionTitle')[:10]
     else:
-        question_1 = Question.objects.filter(questionCategory_id=category_id).order_by('-created','-grade',
+        question_1 = Question.objects.filter(questionCategory_id=category_id).order_by('-created', '-grade',
                                                                                        'questionTitle')
         question_2 = Question.objects.filter(questionCategory_id=category_id).order_by('-views', 'created',
                                                                                        'questionTitle')
@@ -63,6 +64,7 @@ def index(request, page_id):
     }
     return render(request, "question/index_question.html", context=context)
 
+
 @login_required(login_url='/account/login')
 def question_content(request, question_id):
     question = Question.objects.get(id=question_id)
@@ -92,7 +94,7 @@ def question_content(request, question_id):
         "questions": questions,
         "question_2": question_2,
         'data': _data,
-        'question_collect':question_collect,
+        'question_collect': question_collect,
         'user': _user
     }
     return render(request, "question/content.html", context=context)
@@ -211,7 +213,7 @@ def search(request):
                                                                       :10]})
 
     # 按照时间、赞数、名称进行排序
-    q = Question.objects.filter(questionTitle__icontains=keyword).order_by('-created','-goodNum',  'questionTitle')
+    q = Question.objects.filter(questionTitle__icontains=keyword).order_by('-created', '-goodNum', 'questionTitle')
     if q != '':
         question_list = q
     # 按照用户名进行排序
@@ -219,7 +221,7 @@ def search(request):
     if u != '':
         user_list = u
     # 按时间、名称排序
-    d = Department.objects.filter(name__icontains=keyword).order_by('-id','name')
+    d = Department.objects.filter(name__icontains=keyword).order_by('-id', 'name')
     if d != '':
         department_list = d
     n = Node.objects.filter(body__icontains=keyword).order_by('-id')
@@ -231,8 +233,8 @@ def search(request):
 
     return render(request, 'question/search.html', {'err_msg': err_msg, 'question_list': question_list,
                                                     'user_list': user_list,
-                                                    'department_list':department_list,
-                                                    'node_list':node_list,'file_list':file_list,
+                                                    'department_list': department_list,
+                                                    'node_list': node_list, 'file_list': file_list,
                                                     'keyword': keyword, 'type': type,
                                                     'question_2': Question.objects.all().order_by('-views', 'created',
                                                                                                   'questionTitle')[
@@ -342,6 +344,7 @@ def my_answers(request):
     context['answers'] = answers
     return render(request, 'question/my_answers.html', context=context)
 
+
 @csrf_exempt
 @xframe_options_sameorigin
 def upload(request):
@@ -375,10 +378,19 @@ def upload(request):
             name = settings.MEDIA_ROOT + url
         try:
             img.save(name)
-            url = 'media/editor/'+data.name
+            url = 'media/editor/' + data.name
             # url = '/static' + name.split('static')[-1]
             # url = name.split('static')[-1]
             return JsonResponse({"success": 1, "message": "成功", "url": url})
         except Exception as e:
             return JsonResponse({'success': 0, 'message': '上传失败'})
 
+
+def deletequestion(request, question_id):
+    try:
+        question = Question.objects.get(pk=question_id)
+        question.delete()
+    except Exception as e:
+        print('delete error is %s' % e)
+    page_id = request.GET.get('page_id')
+    return HttpResponseRedirect(reverse('question:index', args=(page_id,)))
