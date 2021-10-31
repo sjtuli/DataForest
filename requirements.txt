@@ -1,5 +1,4 @@
-Django~=3.2.8
-django-notifications-hq~=1.6.0
-Markdown~=3.3.4
-pillow==7.1.2
-django-meditor
+Django
+django-notifications-hq
+pillow
+django-mdeditor

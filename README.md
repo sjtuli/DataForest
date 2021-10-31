@@ -2,44 +2,50 @@
 ### It's a learning share platform
 
 **使用：**
-##0、Python3 安装 
-###Linux(Cent OS):
-which pyhton  #查看python版本
-wget https://www.python.org/ftp/python/3.7.12/Python-3.7.12.tgz
-tar -zxvf Python-3.7.12.tgz
-yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make
-./configure --prefix=/root/training/Python-3.6.5
-make
-make install
-###Micsoft:
-手动安装
-https://www.python.org/downloads/windows/
-###Mac:
-手动安装
-https://www.python.org/downloads/macos/
+<!--##0、Python3 安装 -->
+<!--###Linux(Cent OS):-->
+<!--which pyhton  #查看python版本-->
+<!--wget https://www.python.org/ftp/python/3.7.12/Python-3.7.12.tgz-->
+<!--tar -zxvf Python-3.7.12.tgz-->
+<!--yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make-->
+<!--./configure --prefix=/root/training/Python-3.6.5-->
+<!--make-->
+<!--make install-->
+<!--###Micsoft:-->
+<!--手动安装-->
+<!--https://www.python.org/downloads/windows/-->
+<!--###Mac:-->
+<!--手动安装-->
+<!--https://www.python.org/downloads/macos/-->
+<!---->
+<!--##1、django 安装-->
+<!--pip install django==2.2.3-->
+<!---->
+<!--##2、mdeditor 安装-->
+<!--pip install mdeditor-->
+<!---->
+<!--##3、pillow 安装-->
+<!--pip install pillow-->
+<!---->
+<!--##4、更新SQLite3/MySQL-->
+<!--###Linux:-->
+<!--wget https://sqlite.org/2019/sqlite-autoconf-3290000.tar.gz-->
+<!--tar zxvf sqlite-autoconf-3290000.tar.gz-->
+<!--cd sqlite-autoconf-3290000-->
+<!--./configure-->
+<!--make-->
+<!--sudo make install-->
+<!--###Micsoft:-->
+<!--手动安装-->
+<!--http://www.sqlite.org/-->
+<!--###Mac:-->
+<!--出厂自带-->
 
-##1、django 安装
-pip install django==2.2.3
+<!--pip uninstall django django-notifications-hq pillow django-mdeditor-->
 
-##2、mdeditor 安装
-pip install mdeditor
-
-##3、pillow 安装
-pip install pillow
-
-##4、更新SQLite3/MySQL
-###Linux:
-wget https://sqlite.org/2019/sqlite-autoconf-3290000.tar.gz
-tar zxvf sqlite-autoconf-3290000.tar.gz
-cd sqlite-autoconf-3290000
-./configure
-make
-sudo make install
-###Micsoft:
-手动安装
-http://www.sqlite.org/
-###Mac:
-出厂自带
+0.安装python，不要忘记勾选PATH
+1.在当前文件夹下(DataForest)运行 pip install --no-index --find-link="pip/" django django-notifications-hq pillow django-mdeditor
+2.运行python manage.py runserver
 
 **功能：** 
 0. 数据库添加功能： 
