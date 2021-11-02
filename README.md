@@ -1,5 +1,5 @@
 # DataForest 🌲
-### It's a learning share platform
+### It's a Database platform
 
 **使用：**
 <!--##0、Python3 安装 -->
