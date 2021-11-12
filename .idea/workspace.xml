@@ -6,29 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c70e6140-5b80-4eb5-861d-2bbe263ec9f7" name="Changes" comment="增加删除功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LearningShare/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/LearningShare/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/loginbg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/src=http___cdn.bianchengquan.com_3fe94a002317b5f9259f82690aeea4cd_blog_5ff6d29e624f8.jpeg&amp;refer=http___cdn.bianchengquan.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/截屏2021-09-22 下午3.20.42.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/截屏2021-09-22 下午3.20.42744.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/截屏2021-09-22 下午3.20.42868.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/截屏2021-09-23 下午3.55.26.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/截屏2021-09-23 下午3.55.26105.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/截屏2021-09-23 下午3.55.26451.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/截屏2021-09-23 下午3.55.26522.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/editor/截屏2021-10-16 下午8.00.01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tree/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tree/oldtree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/37/表格范例.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/37/表格范例_5u6753g.xls" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TreeDemo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -81,16 +59,16 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="LearningShare" type="PythonConfigurationType" factoryName="Python" singleton="false">
+    <configuration name="DataForest" type="PythonConfigurationType" factoryName="Python" singleton="false">
       <module name="DataForest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\86134\.virtualenvs\DataForest-vijcYUmh\Scripts\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
