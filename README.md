@@ -1,51 +1,27 @@
-# DataForest 🌲
-### It's a Database platform
+# DataForest 🌲  数据库
+### It's a Database platform based on Django, zTree and some simple structure.
+
 
 **使用：**
-<!--##0、Python3 安装 -->
-<!--###Linux(Cent OS):-->
-<!--which pyhton  #查看python版本-->
-<!--wget https://www.python.org/ftp/python/3.7.12/Python-3.7.12.tgz-->
-<!--tar -zxvf Python-3.7.12.tgz-->
-<!--yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make-->
-<!--./configure --prefix=/root/training/Python-3.6.5-->
-<!--make-->
-<!--make install-->
-<!--###Micsoft:-->
-<!--手动安装-->
-<!--https://www.python.org/downloads/windows/-->
-<!--###Mac:-->
-<!--手动安装-->
-<!--https://www.python.org/downloads/macos/-->
-<!---->
-<!--##1、django 安装-->
-<!--pip install django==2.2.3-->
-<!---->
-<!--##2、mdeditor 安装-->
-<!--pip install mdeditor-->
-<!---->
-<!--##3、pillow 安装-->
-<!--pip install pillow-->
-<!---->
-<!--##4、更新SQLite3/MySQL-->
-<!--###Linux:-->
-<!--wget https://sqlite.org/2019/sqlite-autoconf-3290000.tar.gz-->
-<!--tar zxvf sqlite-autoconf-3290000.tar.gz-->
-<!--cd sqlite-autoconf-3290000-->
-<!--./configure-->
-<!--make-->
-<!--sudo make install-->
-<!--###Micsoft:-->
-<!--手动安装-->
-<!--http://www.sqlite.org/-->
-<!--###Mac:-->
-<!--出厂自带-->
 
-<!--pip uninstall django django-notifications-hq pillow django-mdeditor-->
+装好 python3
 
-0.安装python，不要忘记勾选PATH
-1.在当前文件夹下(DataForest)运行 pip install --no-index --find-link="pip/" django django-notifications-hq pillow django-mdeditor
-2.运行python manage.py runserver
+`cd`到 DataForest 文件夹下
+
+`pip3 install -r requirements.txt`
+
+`python3 manage.py runserver`
+
+**展示**
+
+#### 主页分类
+![](DemoDemo/2.png)
+#### 详情页
+![](DemoDemo/3.png)
+#### Markdown 书写
+![](DemoDemo/4.png)
+#### Search
+![](DemoDemo/1.png)
 
 **功能：** 
 0. 数据库添加功能： 
@@ -72,10 +48,6 @@
 2. Pillow(`version: 7.1.2`)
 3. django-notifications-hq(`version: 1.6.0`)
 4. django-mdeditor  # 用于后台编辑
-
-**版本信息：**
-0. python(`version: 3.7.12`)
-1. Django(`version: 2.2.3`)
 
 **运行方式：**
 1. 在本地下载目录
