@@ -14,11 +14,11 @@
     <title></title>
 </head>
 <body>
-    <h3>upload file</h3>
+    <h4>上传文件</h4>
     <form method="post" enctype="multipart/form-data" action="uploadFile/" id="upload_file">{% csrf_token %}
-        <input type="file" name="myfile" />
+        <input type="file" name="myfile" /><br>
+        <input type="submit" value="上传" />
         {{ form.as_p }}
-        <input type="submit" value="Submit" />
     </form>
 </body>
 </html>
@@ -29,17 +29,18 @@
 <link rel="stylesheet" href="{% static 'editor/css/editormd.css' %}">
 <form class="form-horizontal" action="." method="post">{% csrf_token %}
     <div class="row" style="margin-top: 10px;">
-        <div class="col-md-2 text-right"><span>你的回答：</span></div>
+<!--        <div class="col-md-2 text-right"><span>数据修改：</span></div>-->
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp;你的回答：</h4>
+             <div class="row">
+
+    </div>
+        </div>
             <div id="editormd" class="col-md-10 text-left">
                 <textarea style="display: none;" id="id_body" >{{ node.body }}</textarea>
             </div>
-{#                content_of_answer为回答内容，随便改名字#}
-
+{#  content_of_answer为回答内容，随便改名字#}
+    <div><button  type="submit" class="btn btn-default" style="margin-left:200px">提交</button>
     </div>
-     <div class="row">
-        <button class="btn btn-default" type="submit" class="btn btn-default" style="margin-left:200px">回答</button>
-    </div>
-
 
 </form>
 
@@ -49,9 +50,10 @@
     $(function() {
 var editor  = editormd("editormd",{
             width : "100%",
-            height : 420,
+            height : 600,
             path : "{% static 'editor/lib/' %}",
             syncScrolling : "single",
+            //emoji: ture,
             tocm: true,         // Using [TOCM]
                     tex: true,                   // 开启科学公式TeX语言支持，默认关闭
                     flowChart: true,             // 开启流程图支持，默认关闭
@@ -62,10 +64,16 @@ var editor  = editormd("editormd",{
                     onload: function () {
                         console.log('onload', this);
                     },
+            toolbarIcons : function() {
+            // Or return editormd.toolbarModes[name]; // full, simple, mini
+            // Using "||" set icons align right.
+                return ["undo", "redo", "|", "bold", "hr","pagebreak", "|","table", "|","preview", "watch", "|", "fullscreen",]
+        },
         });
     });
 </script>
 {% endblock %}
+{% block right %}{% endblock %}
 
 <!--<script>-->
 <!--      function upload_file(file) {-->

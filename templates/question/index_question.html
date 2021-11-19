@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <style>
+        div{
+            font-family:&amp;quot;Microsoft YaHei&amp;quot;,微软雅黑,&amp;quot;MicrosoftJhengHei&amp;quot;,华文细黑,STHeiti,MingLiu;
+            }
+    </style>
 </head>
 
 <body>
@@ -38,7 +43,7 @@
                     <div class="tt-topic-list">
                         <div class="tt-list-header">
                             <div class="tt-col-topic">
-                                <h2>数据集🌲管理</h2>
+                                <h2>试验数据管理</h2>
                             </div>
                         </div>
                         {% block question_list %}{% endblock %}
@@ -58,7 +63,7 @@
                             </div>
                             <div class="tt-col-category"><span
                                     class="tt-color04 tt-badge">{{ question.questionCategory }}</span></div>
-                            <div class="col-ms-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ question.user }}发表于{{ question.created }}</div>
+                            <div class="col-ms-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ question.user }}发表于{{ question.created | date:'Y年m月d日 h时 i分' }}</div>
                             {% if user.is_superuser %}
                             <a href="{% url 'question:delete-question' question_id=question.pk  %}?page_id=1"><div class="news-title">&nbsp;&nbsp;&nbsp;&nbsp;删除</div></a>
                             {% endif %}

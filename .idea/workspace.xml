@@ -4,9 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c70e6140-5b80-4eb5-861d-2bbe263ec9f7" name="Changes" comment="。">
+    <list default="true" id="c70e6140-5b80-4eb5-861d-2bbe263ec9f7" name="Changes" comment="update README.md">
+      <change afterPath="$PROJECT_DIR$/static/js/MathJax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DataForest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DataForest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/zTreeStyle/zTreeStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/zTreeStyle/zTreeStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/editor/css/editormd.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/editor/css/editormd.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/editor/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/editor/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/head.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/question/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/content.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/question/content_node.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/content_node.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/question/index_question.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/index_question.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/question/modify_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/modify_post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tree/tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tree/tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +47,17 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/LearningShare/urls.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuestionApp/views.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CategoryApp/apps.py" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/tree/tree.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/question/redit_question.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tree/urls.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/question/modify_post.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/question/search.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tree/views.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/question/my_questions.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/QuestionApp/models.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zqOmwtIAWhWQ0gsHksWagptbDC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -130,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636720159775</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update README.md">
+      <created>1636721057101</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1636721057101</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +183,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="增加删除功能" />
     <MESSAGE value="。" />
-    <option name="LAST_COMMIT_MESSAGE" value="。" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -3,34 +3,82 @@
 {% load static %}
 
 {% block node %}
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    showProcessingMessages: false, //关闭js加载过程信息
+    messageStyle: "none", //不显示信息
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath:  [['$', '$']], //行内公式选择$
+        displayMath: [ ["$$","$$"] ], //段内公式选择$$
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], //避开某些标签
+        ignoreClass:"comment-content" //避开含该Class的标签
+    },
+    "HTML-CSS": {
+        availableFonts: ["STIX","TeX"], //可选字体
+        showMathMenu: true //关闭右击菜单显示
+    }
+    });
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+
+    </script>
+    <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="dns-prefetch" href="//cdn.mathjax.org" />
+
+
+    <style>
+        p{
+            font-family:&amp;quot;Microsoft YaHei&amp;quot;,微软雅黑,&amp;quot;MicrosoftJhengHei&amp;quot;,华文细黑,STHeiti,MingLiu; /*若电脑不支持宋体，则用仿宋，若不支持仿宋，则在sans-serif中找*/
+            line-height:0px;
+            //margin:0 auto;
+            //font-weight: bold;
+            font-size: 120%;
+            //font-style: italic;
+            //color: red;/*字体颜色*/
+            //opacity: 0.5;/*字体的透明度：1：默认样式，0：全透明*/
+        }
+        div{
+            font-family:&amp;quot;Microsoft YaHei&amp;quot;,微软雅黑,&amp;quot;MicrosoftJhengHei&amp;quot;,华文细黑,STHeiti,MingLiu;
+            }
+    </style>
 
 <h4>{{department.name}}</h4>
     <div class="entry-meta">
       <span class="post-date"><a href="#"><time class="entry-date"
                                                 datetime="{{ node.created_time }}">{{ node.created_time }}</time></a></span>
-      <span class="post-author"><a href="#">{{ node.author }}</a></span>
-    </div>
+      <span class="post-author">作者: &nbsp;{{ node.author }}</span>
 
+&nbsp;&nbsp;&nbsp;&nbsp;
 {% if user.is_superuser %}
-<a href="modify/"><button class="btn btn-default ">修改</button></a>
+<a href="modify/"><span class="tt-badge">修改</span></a>
 {% endif %}
-
+    </div>
 {% for nodefile in nodefile %}
 {% if nodefile.pk %}
 <!--下载-->
 <div>
-<a href="{% url  'tree:download_file' department_id=nodefile.department_id pk=nodefile.pk %}" style="color : cornflowerblue; font-size: 20px">{{nodefile.File_name}}  &nbsp; 下载 </a>
-<a href="{% url  'tree:delete_file' department_id=nodefile.department_id pk=nodefile.pk %}" style="color : orangered; font-size: 20px"> &nbsp;&nbsp; 删除 </a>
+<a href="{% url  'tree:download_file' department_id=nodefile.department_id pk=nodefile.pk %}" style="color : cornflowerblue; font-size: 15px">{{nodefile.File_name}}  &nbsp; 下载 </a>
+<a href="{% url  'tree:delete_file' department_id=nodefile.department_id pk=nodefile.pk %}" style="color : orangered; font-size: 15px"> &nbsp;&nbsp; 删除 </a>
 </div>
 {% endif %}
 {% endfor %}
-
 <article class=" post-{{ node.pk }}">
-  <div class="entry-content clearfix">
+<!--  <div class="entry-content clearfix">-->
+    <div>
     <br />
-   {{ node.body|safe }}
+
+   {{ node.body| markdown | safe }}
   </div>
 </article>
+
+<!--<script>-->
+<!--    $(function(){undefined-->
+<!--  $("p").text("p标签内容");-->
+<!--})-->
+<!--</script>-->
 {% endblock node %}
 {% block right%}
 {% endblock %}
+
+

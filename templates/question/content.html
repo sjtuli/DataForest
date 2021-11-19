@@ -29,22 +29,22 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="tt-item-tag">
-                        <ul class="tt-list-badge">
-                            {% if question_collect %}
-                            <li><a href="{% url 'question:cancel_collect_question' id=question.id action='取消收藏' %}">
-                                    <span class="tt-badge">取消收藏</span></a></li>
-                            {% else %}
-                            <li><a href="{% url 'question:collect_question' id=question.id action='收藏' %}">
-                                    <span class="tt-badge">⭐&nbsp;&nbsp;&nbsp;收藏</span></a></li>
-                            {% endif %}
-                         <li><a  href="#"><span class="tt-badge"> {{ question.views }}view{{ question.views|pluralize }}
-                                    </span></a></li>
-                        </ul>
-                    </div>
+<!--                    <div class="tt-item-tag">-->
+<!--                        <ul class="tt-list-badge">-->
+<!--                            {% if question_collect %}-->
+<!--                            <li><a href="{% url 'question:cancel_collect_question' id=question.id action='取消收藏' %}">-->
+<!--                                    <span class="tt-badge">取消收藏</span></a></li>-->
+<!--                            {% else %}-->
+<!--                            <li><a href="{% url 'question:collect_question' id=question.id action='收藏' %}">-->
+<!--                                    <span class="tt-badge">⭐&nbsp;&nbsp;&nbsp;收藏</span></a></li>-->
+<!--                            {% endif %}-->
+<!--                         <li><a  href="#"><span class="tt-badge"> {{ question.views }}view{{ question.views|pluralize }}-->
+<!--                                    </span></a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                 </div>
                 <div class="tt-item-description">
-                    <h6 class="tt-title">数据集🌲&nbsp;&nbsp;描述：</h6>
+                    <h3>试验数据描述：</h3>
                     <p>{{ question.questionDescription | markdown | safe }}</p>
 
                     {% include 'tree/tree.html'  %}
@@ -52,7 +52,6 @@
                 {% block node %}
             </div>
         </div>
-
         {% endblock node %}
     </div>
 </div>

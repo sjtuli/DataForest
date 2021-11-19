@@ -27,12 +27,8 @@
 <div class="wrapper">
     {% if user.is_superuser %}
     {% block breadcrumb %}
-        <button class="btn btn-default" onclick="createForm()">
-            <span class="glyphicon glyphicon-plus"></span> 添 加
-        </button>
-    <button class="btn btn-default" onclick="deleteForm()">
-            <span class="glyphicon glyphicon-minus"></span> 删 除
-        </button>
+        <span class="tt-badge"onclick="createForm()">➕ 添 加</span>&nbsp;&nbsp;
+        <span class="tt-badge" onclick="deleteForm()">➖ 删 除</span>
     {% endblock %}
 {% endif %}
     {% block content %}
@@ -85,7 +81,7 @@
                                     </div>
 
 
-                                            <input type="text" class="form-control" id="form_question_id" name="question_id" value="{{ question_id }}"
+                                            <input type="text" class="form-control" id="form_question_id" name="question_id" value= {{ question_id }}
                                                    requiredplaceholder="" hidden>
 
 <!--{#                                                   disabled="disabled"#}-->
@@ -134,7 +130,7 @@
                                         </div>
                                     </div>
 
-                                            <input type="text" class="form-control" id="form_question_id2" name="question_id" value="{{ question_id }}"
+                                            <input type="text" class="form-control" id="form_question_id2" name="question_id" value={{ question_id }}
                                                    hidden>
 
                                     <div class="modal-footer">

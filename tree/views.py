@@ -51,20 +51,21 @@ def node_detail(request, department_id):
         nodedata = {"department": department, "author": user}
         Node.objects.create(**nodedata)
         pass
-    node = department.node.get()
+    node: object = department.node.get()
     _nodefile = department.file.filter()
     question_id = department.question_id
     question = Question.objects.get(id=question_id)
-    # post = node
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
         'markdown.extensions.toc',
         TocExtension(slugify=slugify),
     ])
+    # node.body = node.body.replace('', '\n\n')
+
     node.body = md.convert(node.body)
-    m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
-    node.toc = m.group(1) if m is not None else ' '
+    # m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
+    # node.toc = m.group(1) if m is not None else ' '
 
     mList = Department.objects.filter(question_id=question_id)   #tree information
     _data = [
