@@ -4,24 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c70e6140-5b80-4eb5-861d-2bbe263ec9f7" name="Changes" comment="update README.md">
-      <change afterPath="$PROJECT_DIR$/static/js/MathJax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DataForest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DataForest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c70e6140-5b80-4eb5-861d-2bbe263ec9f7" name="Changes" comment="进行migrate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/zTreeStyle/zTreeStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/zTreeStyle/zTreeStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/editor/css/editormd.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/editor/css/editormd.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/editor/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/editor/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/question/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/question/content_node.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/content_node.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/question/index_question.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/index_question.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/question/modify_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/modify_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tree/tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tree/tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +21,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
