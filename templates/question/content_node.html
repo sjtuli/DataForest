@@ -59,7 +59,9 @@
 <!--下载-->
 <div>
 <a href="{% url  'tree:download_file' department_id=nodefile.department_id pk=nodefile.pk %}" style="color : cornflowerblue; font-size: 15px">{{nodefile.File_name}}  &nbsp; 下载 </a>
+    {% if user.is_superuser %}
 <a href="{% url  'tree:delete_file' department_id=nodefile.department_id pk=nodefile.pk %}" style="color : orangered; font-size: 15px"> &nbsp;&nbsp; 删除 </a>
+    {% endif %}
 </div>
 {% endif %}
 {% endfor %}

@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c70e6140-5b80-4eb5-861d-2bbe263ec9f7" name="Changes" comment="进行migrate">
+      <change afterPath="$PROJECT_DIR$/数据库优化.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/39/favicon2.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/question/content_node.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/content_node.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636721057101</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="进行migrate">
+      <created>1637307900729</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1637307900729</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,7 +169,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -169,7 +192,8 @@
     <MESSAGE value="增加删除功能" />
     <MESSAGE value="。" />
     <MESSAGE value="update README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
+    <MESSAGE value="进行migrate" />
+    <option name="LAST_COMMIT_MESSAGE" value="进行migrate" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
